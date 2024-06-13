@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edición de empleado</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.opciones {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.atras {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+    padding: 15px;
+}
+    </style>
+  </head>
+
+  <body>
+    <h1>Edición de empleado</h1>
+    <form
+      method="post"
+      action="#"
+      th:action="@{/empleados/editar/submit}"
+      th:object="${empleadoForm}"
+    >
+      <label>Id: <input type="text" id="id" th:field="*{id}" readonly /> </label
+      ><br />
+      <label
+        >Nombre: <input type="text" id="nombre" th:field="*{nombre}" /></label
+      ><br />
+      <label
+        >Clave: <input type="password" id="clave" th:field="*{clave}" /></label
+      ><br />
+      <label
+        >Rol:
+        <select id="rol" th:field="*{rol}">
+          <option value="EMPLEADO">Empleado</option>
+          <option value="ADMIN">Admin</option>
+        </select> </label
+      ><br />
+      <label
+        >Fecha de registro:
+        <input
+          type="text"
+          id="fecha"
+          th:field="*{fechaRegistro}"
+          readonly /></label
+      ><br />
+      <div class="opciones">
+        <input type="submit" value="Enviar" />
+        <a class="atras" th:href="@{/empleados}">Atrás</a>
+      </div>
+    </form>
+  </body>
+  </html>
