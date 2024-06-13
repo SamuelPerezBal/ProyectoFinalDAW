@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empleados</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <header th:replace="~{/fragments/navFragment.html::header}"></header>
+  <h1>Lista de empleados</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha de Registro</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr th:each="empleado : ${listaEmpleados}">
+        <td th:text="${empleado.nombre}">*</td>
+        <td th:text="${empleado.fechaRegistro}">*</td>
+        <td>
+          <a th:if="${empleado.nombre == 'Admin'}"></a>
+          <a th:unless="${empleado.nombre == 'Admin'}" th:href="@{/empleados/editar/{id}(id=${empleado.id})}">Editar</a>
+        </td>
+        <td>
+          <a th:if="${empleado.nombre == 'Admin'}"></a>
+          <a onclick="estasSeguro(event);" th:unless="${empleado.nombre == 'Admin'}" th:href="@{/empleados/borrar/{id}(id=${empleado.id})}">Borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn-csv" th:href="@{/empleados/nuevo}">
+    <button class="btn-csv">Nuevo usuario</button>
+  </a><br />
+  <p id="msg" th:text="${msg}">mensaje</p>
+</body>
+<footer th:replace="~{/fragments/navFragment.html::footer}"></footer>
+</html>

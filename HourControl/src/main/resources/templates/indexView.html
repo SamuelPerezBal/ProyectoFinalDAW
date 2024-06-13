@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/main.js" defer></script>
+</head>
+
+<body>
+  <header th:replace="~{/fragments/navFragment.html::header}"></header>
+  <h2>Registra la entrada y salida</h2>
+  <div class="entrada">
+    <div class="action">
+      <a th:href="@{/ficha/entrada}">
+        <button class="btn-enter" id="btn-enter">Entrar</button>
+      </a>
+    </div>
+    <div class="salida">
+      <a th:href="@{/ficha/salida}">
+        <button class="btn-exit" id="btn-exit" disabled>Salir</button>
+      </a>
+    </div>
+  </div>
+</body>
+<footer th:replace="~{/fragments/navFragment.html::footer}"></footer>
+</html>
